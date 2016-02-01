@@ -83,6 +83,7 @@ angular.module('listings').controller('ListingsController', ['$scope', '$locatio
         successfully finished, navigate back to the 'listing.list' state using $state.go(). If an error
         occurs, pass it to $scope.error.
        */
+       var id = $stateParams.listingId;
     };
 
     $scope.remove = function() {
@@ -91,7 +92,7 @@ angular.module('listings').controller('ListingsController', ['$scope', '$locatio
         display the error.
        */
        var id = $stateParams.listingId;
-       
+
        console.log('remove function called');
        Listings.delete(id).then(function(response){
           $state.go('listings.list', { successMessage: 'Listing successfully deleted'}) ;
