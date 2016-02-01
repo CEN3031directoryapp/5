@@ -70,7 +70,7 @@ angular.module('listings').controller('ListingsController', ['$scope', '$locatio
       Listings.create(listing)
               .then(function(response) {
                 //if the object is successfully saved redirect back to the list page
-                $state.go('listings.list', { successMessage: 'Listing succesfully created!' });
+                $state.go('listings.list', { successMessage: 'Listing successfully created!' });
               }, function(error) {
                 //otherwise display the error
                 $scope.error = 'Unable to save listing!\n' + error;
@@ -90,6 +90,14 @@ angular.module('listings').controller('ListingsController', ['$scope', '$locatio
         Implement the remove function. If the removal is successful, navigate back to 'listing.list'. Otherwise,
         display the error.
        */
+       var id = $stateParams.listingId;
+       
+       console.log('remove function called');
+       Listings.delete(id).then(function(response){
+          $state.go('listings.list', { successMessage: 'Listing successfully deleted'}) ;
+      }, function(error){
+          $scope.error = 'Unable to delete listing!\n' + error;
+      });
     };
 
     /* Bind the success message to the scope if it exists as part of the current state */
@@ -97,7 +105,7 @@ angular.module('listings').controller('ListingsController', ['$scope', '$locatio
       $scope.success = $stateParams.successMessage;
     }
 
-    /* Map properties */
+    /*  properties */
     $scope.map = {
       center: {
         latitude: 29.65163059999999,
