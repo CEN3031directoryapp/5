@@ -1,3 +1,5 @@
+#Nicolas Fry &  Or Oz
+
 # Assignment 5: Using our server API and implementing state on the front-end
 In this final assignment, we will work on integrating the back-end with our Angular code, and also making the client-side code more modular by introducing the concept of state. 
 
